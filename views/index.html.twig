@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
+        <meta charset="utf-8">
+        <title>Hair Salon</title>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo">Hair Salon</a>
+            </div>
+        </nav>
+        <div class="container">
+
+            <form action="/stylists" method="post">
+                <div class="input-field">
+                    <input type="text" class="validate" name="name" required>
+                    <label for="Stylists">Stylist Name</label>
+                    <button class="btn waves-effect blue darken-1 waves-light" type="submit" name="button">Add a Stylist!</button>
+                </div>
+            </form>
+
+                {% for stylist in stylists %}
+                <a class="waves-effect waves-teal btn-large buttons" href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a>
+                {% endfor %}
+        </div>
+    </body>
+</html>

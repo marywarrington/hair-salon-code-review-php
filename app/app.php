@@ -18,7 +18,9 @@
     Request::enableHttpMethodParameterOverride();
 
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.html.twig');
+        return $app['twig']->render('index.html.twig', array(
+            'stylists' => Stylist::getAll()
+        ));
     });
 
     return $app;
