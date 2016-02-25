@@ -20,14 +20,14 @@
             <form action="/stylists" method="post">
                 <div class="input-field">
                     <input type="text" class="validate" name="name" required>
-                    <label for="Stylists">Stylist Name</label>
+                    <label for="name">Stylist Name</label>
                     <button class="btn waves-effect blue darken-1 waves-light" type="submit" name="button">Add a Stylist!</button>
                 </div>
             </form>
-
-                {% for stylist in stylists %}
+<br>
+            {% for stylist in stylists %}
                 <a class="waves-effect waves-teal btn-large buttons" href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a>
-                {% endfor %}
+            {% endfor %}
         </div>
     </body>
 </html>
