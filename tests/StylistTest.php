@@ -97,6 +97,26 @@
 
         }
 
+        function test_deleteOneStylist()
+        {
+            //Arrange
+            $name = "Jennifer Cutsworth";
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+
+            $name2 = "Ed Shaver";
+            $test_stylist2 = new Stylist($name2, $id);
+            $test_stylist2->save();
+
+
+            //Act
+            $test_stylist->deleteOneStylist();
+
+            //Assert
+            $this->assertEquals([$test_stylist2], Stylist::getAll());
+        }
+
     }
 
 ?>

@@ -51,6 +51,12 @@
             $this->setName($new_name);
         }
 
+        function deleteOneStylist()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
+            //don't forget to delete client data too
+        }
+
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists;");
