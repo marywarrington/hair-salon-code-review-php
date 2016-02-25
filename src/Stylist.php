@@ -51,6 +51,19 @@
             $this->setName($new_name);
         }
 
+        static function findStylistById($search_id)
+        {
+            $found_stylist = null;
+            $stylists = Stylist::getAll();
+
+            foreach ($stylists as $stylist) {
+                if ($stylist->getId() == $search_id) {
+                    $found_stylist = $stylist;
+                }
+            }
+            return $found_stylist;
+        }
+
         function deleteOneStylist()
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
