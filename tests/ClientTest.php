@@ -13,7 +13,6 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
-
     class ClientTest extends PHPUnit_Framework_TestCase
     {
 
@@ -23,6 +22,22 @@
             Stylist::deleteAll();
         }
 
-        
+        function test_getName()
+        {
+            $name = "Mary";
+            $id = 1;
+            $phone = "503-347-2222";
+            $email = "mary@email.com";
+            $stylist_id = 1;
+
+            $test_client = new Client($name, $phone, $email, $id = null, $stylist_id);
+
+            //Act
+            $result = $test_client->getName();
+
+            //Assert
+            $this->assertEquals($name, $result);
+        }
+
     }
 ?>

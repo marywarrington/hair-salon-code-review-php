@@ -56,6 +56,10 @@
             return $this->stylist_id;
         }
 
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM clients;");
+        }
 
     }
 ?>
