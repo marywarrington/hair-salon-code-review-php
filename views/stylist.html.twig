@@ -1,0 +1,61 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+     <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <title>Clients</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">Hair Salon</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div>
+            <h1>{{ stylist.getName }}</h1>
+        </div>
+
+        <p><a href="/stylists/{{ stylist.getId }}/edit">Edit this stylist</a></p>
+
+        {% if clients is not empty %}
+            <ul>
+                {% for client in clients %}
+                    <li>
+                        <h3>{{ client.getName }}</h3>
+                        <h4>{{ client.getPhone }}</h4>
+                        <h4>{{ client.getEmail }}</h4>
+                        <form action="/clients/{{ client.getId }}/edit" method="get">
+                            <button class="btn waves-effect blue darken-1 waves-light" type="submit" name="button">Edit client</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+<br>
+        <h4>Add a client</h4>
+
+        <form action='/clients' method='post'>
+            <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId() }}">
+            <div class="input-field">
+                <label for='client_name'>Client Name</label>
+                <input id='client_name' name='client_name' type='text' required>
+            </div>
+            <div class="input-field">
+                <label for='phone'>Phone Number:</label>
+                <input id='phone' name='phone' type='text' required>
+            </div>
+            <div class="input-field">
+                <label for='email'>Email:</label>
+                <input id='email' name='email' type='text' required>
+            </div>
+
+            <button class="btn waves-effect blue darken-1 waves-light" type="submit" name="button">Add client</button>
+
+        </form>
+
+        <p><a href='/'>Home</a></p>
+    </div>
+</body>
+</html>

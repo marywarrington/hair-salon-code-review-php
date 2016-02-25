@@ -31,6 +31,15 @@
         ));
     });
 
+    $app->get("/stylist/{id}", function($id) use ($app) {
+        $stylist = Stylist::findStylistById($id);
+        return $app['twig']->render('stylist.html.twig', array(
+            'stylist' => $stylist
+            // ,
+            // 'clients' => $stylist->getClients()
+        ));
+    });
+
     return $app;
 
 ?>
