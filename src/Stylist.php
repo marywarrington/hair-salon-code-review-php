@@ -44,6 +44,23 @@
             }
             return $stylists;
         }
+// DOESN'T WORK
+        function getClients() {
+            $clients = [];
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM client WHERE stylist_id = {$this->getStylistId()};");
+
+            foreach($returned_clients as $client)
+            {
+                $name = $client['name'];
+                $id = $client['id'];
+                $phone = $client['phone'];
+                $email = $client['email'];
+                $stylist_id = $client['stylist_id'];
+                $new_client =  new Client($name, $phone, $email, $id, $stylist_id);
+                array_push($clients, $new_client);
+            }
+            return $clients;
+        }
 
         function updateStylistName($new_name)
         {
