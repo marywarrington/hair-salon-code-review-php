@@ -38,7 +38,7 @@
             'clients' => $stylist->getClients()
         ));
     });
-// DOESN'T WORK
+
     $app->post("/clients", function() use ($app) {
         $client_name = $_POST['client_name'];
         $phone = $_POST['phone'];
@@ -53,6 +53,10 @@
         ));
     });
 
+    $app->get("/clients/{id}/edit", function($id) use ($app) {
+        $client = Client::findClientById($id);
+        return $app['twig']->render('client_edit.html.twig', array('client' => $client));
+    });
 
 
     return $app;

@@ -17,17 +17,17 @@
             <h1>Stylist: {{ stylist.getName }}</h1>
         </div>
 
-        <p><a href="/stylists/{{ stylist.getId }}/edit">Edit this stylist</a></p>
+        <p><a href="/stylists/{{ stylist.getStylistId }}/edit">Edit this stylist</a></p>
 
         {% if clients is not empty %}
-        <h2>{{ stylist.getName }}'s Clients</h2>
+        <h2>{{ stylist.getName }}'s Clients:</h2>
             <ul>
                 {% for client in clients %}
                     <li>
                         <h3>{{ client.getName }}</h3>
                         <h4>{{ client.getPhone }}</h4>
                         <h4>{{ client.getEmail }}</h4>
-                        <form action="/clients/{{ client.getId }}/edit" method="get">
+                        <form action="/clients/{{ client.getClientId }}/edit" method="get">
                             <button class="btn waves-effect blue darken-1 waves-light" type="submit" name="button">Edit client</button>
                         </form>
                     </li>
