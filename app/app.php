@@ -45,6 +45,7 @@
         ));
     });
 
+    // deletes stylist
     $app->delete("/stylist/{id}/delete", function($id) use ($app) {
         $stylist = Stylist::findStylistById($id);
         $stylist->deleteOneStylist();
@@ -113,6 +114,13 @@
         $stylist_id = $client->getStylistId();
         $stylist = Stylist::findStylistById($stylist_id);
         $client->deleteOneClient();
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
+    });
+
+    // deletes all clients from a particular stylist
+    $app->delete("/stylist/{id}/clients_delete", function($id) use ($app) {
+        $stylist = Stylist::findStylistById($id);
+        $stylist->deleteAllClients();
         return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
     });
 

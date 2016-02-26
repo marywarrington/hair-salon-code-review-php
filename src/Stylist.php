@@ -84,12 +84,17 @@
         function deleteOneStylist()
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getStylistId()};");
-            //don't forget to delete client data too
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getStylistId()};");
         }
 
-        static function deleteAll()
+        static function deleteAllStylists()
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists;");
+        }
+
+        function deleteAllClients()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getStylistId()};");
         }
     }
 ?>
