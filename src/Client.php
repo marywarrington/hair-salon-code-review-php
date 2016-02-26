@@ -46,7 +46,7 @@
             return $this->email;
         }
 
-        function getId()
+        function getClientId()
         {
             return $this->id;
         }

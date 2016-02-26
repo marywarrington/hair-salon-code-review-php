@@ -20,7 +20,7 @@
             return $this->name;
         }
 
-        function getId()
+        function getStylistId()
         {
             return $this->id;
         }
@@ -47,7 +47,7 @@
 
         function updateStylistName($new_name)
         {
-            $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_name}' WHERE id = {$this->getStylistId()};");
             $this->setName($new_name);
         }
 
@@ -57,7 +57,7 @@
             $stylists = Stylist::getAll();
 
             foreach ($stylists as $stylist) {
-                if ($stylist->getId() == $search_id) {
+                if ($stylist->getStylistId() == $search_id) {
                     $found_stylist = $stylist;
                 }
             }
@@ -66,7 +66,7 @@
 
         function deleteOneStylist()
         {
-            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getStylistId()};");
             //don't forget to delete client data too
         }
 

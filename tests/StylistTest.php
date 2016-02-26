@@ -43,7 +43,7 @@
             $test_stylist = new Stylist($name, $id);
 
             //Act
-            $result = $test_stylist->getId();
+            $result = $test_stylist->getStylistId();
 
             //Assert
             $this->assertEquals(true, is_numeric($result));
@@ -149,7 +149,7 @@
             $test_stylist2->save();
 
             //Act
-            $result = Stylist::findStylistById($test_stylist2->getId());
+            $result = Stylist::findStylistById($test_stylist2->getStylistId());
 
             //Assert
             $this->assertEquals($test_stylist2, $result);
