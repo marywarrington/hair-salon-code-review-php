@@ -17,7 +17,7 @@
             <h1>Stylist: {{ stylist.getName }}</h1>
         </div>
 
-        <p><a href="/stylists/{{ stylist.getStylistId }}/edit">Edit this stylist</a></p>
+        <p><a href="/stylist/{{ stylist.getStylistId }}/edit">Edit this stylist</a></p>
 
         {% if clients is not empty %}
         <h2>{{ stylist.getName }}'s Clients:</h2>

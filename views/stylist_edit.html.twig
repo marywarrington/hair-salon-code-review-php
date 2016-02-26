@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+         <link rel="stylesheet" href="/css/styles.css" type="text/css">
+        <title>Hair Salon: Edit Stylist</title>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo">Hair Salon</a>
+            </div>
+        </nav>
+        <div class="container">
+            <div>
+                <h1>Update {{ stylist.getName }}'s' Information</h1>
+            </div>
+
+            <form action="/stylist/{{ stylist.getStylistId }}/stylist_name" method="post">
+                <input name="_method" type="hidden" value="patch">
+
+                <div class="input-field">
+                  <label for="stylist_name">Rename your stylist:</label>
+                  <input id="stylist_name" name="stylist_name" type="text" required>
+                </div>
+
+                <button class="btn waves-effect blue darken-1 waves-light" type="submit">Update</button>
+            </form>
+
+            <form action="/stylist/{{ stylist.getStylistId }}/delete" method="post">
+                <input name="_method" type="hidden" value="delete">
+                <button class="btn waves-effect blue darken-1 waves-light" type="submit" name="button">Delete stylist</button>
+            </form>
+            <p><a href='/'>Home</a></p>
+        </div>
+    </body>
+</html>
