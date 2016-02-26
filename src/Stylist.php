@@ -44,7 +44,7 @@
             }
             return $stylists;
         }
-// DOESN'T WORK
+
         function getClients() {
             $clients = [];
             $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getStylistId()};");

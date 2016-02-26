@@ -52,6 +52,16 @@
         ));
     });
 
+    $app->patch("/stylist/{id}/stylist_name", function($id) use ($app) {
+        $new_stylist_name = $_POST['stylist_name'];
+        $stylist = Stylist::findStylistById($id);
+        $stylist->updateStylistName($new_stylist_name);
+        return $app['twig']->render('stylist.html.twig', array(
+            'stylist' => $stylist,
+            'clients' => $stylist->getClients()
+        ));
+    });
+
     $app->post("/clients", function() use ($app) {
         $client_name = $_POST['client_name'];
         $phone = $_POST['phone'];
