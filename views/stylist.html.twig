@@ -14,12 +14,13 @@
     </nav>
     <div class="container">
         <div>
-            <h1>{{ stylist.getName }}</h1>
+            <h1>Stylist: {{ stylist.getName }}</h1>
         </div>
 
         <p><a href="/stylists/{{ stylist.getId }}/edit">Edit this stylist</a></p>
 
         {% if clients is not empty %}
+        <h2>{{ stylist.getName }}'s Clients</h2>
             <ul>
                 {% for client in clients %}
                     <li>

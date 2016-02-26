@@ -38,20 +38,29 @@
             'clients' => $stylist->getClients()
         ));
     });
-// DOESN'T WORK
-    $app->post("/clients", function() use ($app) {
-        $client_name = $_POST['client_name'];
-        $phone = $_POST['phone'];
-        $email = $_POST['email'];
-        $stylist_id = $_POST['stylist_id'];
-        $new_client = new Client($client_name, $phone, $email, $id = null, $stylist_id);
-        $new_client->save();
-        $stylist = Stylist::findStylistById($stylist_id);
+// // DOESN'T WORK
+//     $app->post("/clients", function() use ($app) {
+//         $client_name = $_POST['client_name'];
+//         $phone = $_POST['phone'];
+//         $email = $_POST['email'];
+//         $stylist_id = $_POST['stylist_id'];
+//         $new_client = new Client($client_name, $phone, $email, $id = null, $stylist_id);
+//         $new_client->save();
+//         $stylist = Stylist::findStylistById($stylist_id);
+//         return $app['twig']->render('stylist.html.twig', array(
+//             'stylist' => $stylist,
+//             'clients' => $stylist->getClients()
+//         ));
+//     });
+
+    $app->get("/clients/{id}", function($id) use ($app) {
+        $stylist = Stylist::findStylistById($id);
         return $app['twig']->render('stylist.html.twig', array(
             'stylist' => $stylist,
             'clients' => $stylist->getClients()
         ));
     });
+
 
     return $app;
 
