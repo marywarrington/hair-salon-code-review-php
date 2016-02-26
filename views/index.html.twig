@@ -28,6 +28,12 @@
             {% for stylist in stylists %}
                 <a class="waves-effect waves-teal btn-large buttons" href="/stylist/{{ stylist.getStylistId }}">{{ stylist.getName }}</a>
             {% endfor %}
+            <br>
+            <form action="/stylists/delete_all" method="post">
+                <input name="_method" type="hidden" value="delete">
+
+                <button class="btn waves-effect blue darken-1 waves-light" type="submit" name="button">Delete ALL Stylists</button>
+            </form>
         </div>
     </body>
 </html>

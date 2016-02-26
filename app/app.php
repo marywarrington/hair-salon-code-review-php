@@ -124,6 +124,14 @@
         return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
     });
 
+    // deletes all stylists
+    $app->delete("/stylists/delete_all", function() use ($app) {
+        Stylist::deleteAllStylists();
+        return $app['twig']->render('index.html.twig', array(
+            'stylists' => Stylist::getAll()
+        ));
+    });
+
     return $app;
 
 ?>
