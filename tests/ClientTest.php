@@ -74,13 +74,32 @@
             $phone = "503-347-2222";
             $email = "mary@email.com";
             $stylist_id = $test_stylist->getStylistId();
-            $test_restaurant = new Client($name, $phone, $email, $id, $stylist_id);
+            $test_client = new Client($name, $phone, $email, $id, $stylist_id);
 
             //Act
-            $result = $test_restaurant->getStylistId();
+            $result = $test_client->getStylistId();
 
             //Assert
             $this->assertEquals(true, is_numeric($result));
+        }
+
+        function test_save()
+        {
+            //Arrange
+            $name = "Mary";
+            $phone = "503-347-2222";
+            $email = "mary@email.com";
+            $stylist_id = 1;
+            $id = 1;
+            $test_client = new Client($name, $phone, $email, $id, $stylist_id);
+
+            $test_client->save();
+
+            //Act
+            $result = Client::getAll();
+
+            //Assert
+            $this->assertEquals($test_client, $result[0]);
         }
 
     }
