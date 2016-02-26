@@ -47,10 +47,9 @@
             $test_stylist->save();
 
             $name = "Mary";
-            $id = 1;
             $phone = "503-347-2222";
             $email = "mary@email.com";
-
+            $id = 1;
             $stylist_id = $test_stylist->getStylistId();
             // var_dump($stylist_id);
 
@@ -58,6 +57,27 @@
 
             //Act
             $result = $test_client->getClientId();
+
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
+
+        function test_getStylistId()
+        {
+            //Arrange
+            $stylist_name = "Jennifer Cutsworth";
+            $id = null;
+            $test_stylist = new Stylist($stylist_name, $id);
+            $test_stylist->save();
+
+            $name = "Mary";
+            $phone = "503-347-2222";
+            $email = "mary@email.com";
+            $stylist_id = $test_stylist->getStylistId();
+            $test_restaurant = new Client($name, $phone, $email, $id, $stylist_id);
+
+            //Act
+            $result = $test_restaurant->getStylistId();
 
             //Assert
             $this->assertEquals(true, is_numeric($result));
