@@ -92,6 +92,11 @@
             return $found_client;
         }
 
+        function deleteOneClient()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getClientId()};");
+        }
+
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM clients;");
