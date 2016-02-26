@@ -58,6 +58,32 @@
         return $app['twig']->render('client_edit.html.twig', array('client' => $client));
     });
 
+    $app->patch("/clients/{id}/client_name", function($id) use ($app) {
+            $new_client_name = $_POST['client_name'];
+            $client = Client::findClientById($id);
+            $client->updateClientName($new_client_name);
+            $stylist_id = $client->getStylistId();
+            $stylist = Stylist::findStylistById($stylist_id);
+            return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
+        });
+
+    $app->patch("/clients/{id}/phone", function($id) use ($app) {
+        $new_phone = $_POST['phone'];
+        $client = Client::findClientById($id);
+        $client->updateClientPhone($new_phone);
+        $stylist_id = $client->getStylistId();
+        $stylist = Stylist::findStylistById($stylist_id);
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
+    });
+
+    $app->patch("/clients/{id}/email", function($id) use ($app) {
+        $new_email = $_POST['email'];
+        $client = Client::findClientById($id);
+        $client->updateClientEmail($new_email);
+        $stylist_id = $client->getStylistId();
+        $stylist = Stylist::findStylistById($stylist_id);
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
+    });
 
     return $app;
 

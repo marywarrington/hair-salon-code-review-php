@@ -68,6 +68,18 @@
             $this->setName($new_name);
         }
 
+        function updateClientPhone($new_phone)
+        {
+            $GLOBALS['DB']->exec("UPDATE clients SET phone = '{$new_phone}' WHERE id = {$this->getClientId()};");
+            $this->setName($new_phone);
+        }
+
+        function updateClientEmail($new_email)
+        {
+            $GLOBALS['DB']->exec("UPDATE clients SET email = '{$new_email}' WHERE id = {$this->getClientId()};");
+            $this->setName($new_email);
+        }
+
         static function getAll()
         {
             $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
